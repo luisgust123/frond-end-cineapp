@@ -1,0 +1,65 @@
+
+
+
+  <div class="conten_1">
+
+  
+
+    <mat-form-field style="width: 30%">
+      <input matInput placeholder="Menu Seleccionado" disabled  [(ngModel)]="menu.nombre"  >
+    </mat-form-field>
+
+    <mat-form-field style="width: 30%">
+      <mat-select placeholder="Roles" [(value)]="rolSeleccionado" >
+        <mat-option *ngFor="let r of roles" [value]="r">
+          {{ r.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" style="width: 20% ; height: 50%;" (click)="agregar()">
+      <span>Agregar</span>
+    </button>
+
+  </div>
+
+
+
+  <div class="conten_1">
+    <div style="width: 40%" >
+
+      <h1>Roles Actuales</h1>
+
+      <mat-form-field *ngFor="let x of rolesActuales" style="width: 100%">
+        <input matInput type="text" value="{{x.nombre}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div style="width: 60%">
+
+        <h1>Nuevos roles</h1>
+      <div *ngFor="let r of menu.roles " style="display: flex; width: 100%">
+        <mat-form-field  class="conten_1">
+          <input matInput type="text" value="{{r.nombre}}" disabled>
+          
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="height: 60%" type="button" (click)="quitar(r.idRol)">
+            <span>Remover</span>
+          </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <button mat-raised-button color="primary" type="button" (click)="guardar()" style="left: 70%"  >
+    <mat-icon>done</mat-icon>
+    <span>Aceptar</span>
+  </button>
+  <button mat-raised-button color="accent" routerLink='/rol-usuario' style="left: 70%" type="button">
+    <mat-icon>close</mat-icon>
+    <span>Cancelar</span>
+  </button>
